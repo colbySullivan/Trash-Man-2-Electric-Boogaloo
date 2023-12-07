@@ -1,3 +1,18 @@
-[gd_scene format=3 uid="uid://dy6lqqkww8rpb"]
+[gd_scene load_steps=3 format=3 uid="uid://dy6lqqkww8rpb"]
 
-[node name="Node2D" type="Node2D"]
+[ext_resource type="PackedScene" uid="uid://cod82k8mo8rxq" path="res://pc/trash_man.tscn" id="1_diaur"]
+[ext_resource type="Texture2D" uid="uid://drgcjoq00fnf2" path="res://src/rumham.png" id="2_arfih"]
+
+[node name="level1" type="Node2D"]
+position = Vector2(-5, -2)
+
+[node name="TrashMan" parent="." instance=ExtResource("1_diaur")]
+position = Vector2(-1, 0)
+
+[node name="Camera2D" type="Camera2D" parent="TrashMan"]
+position = Vector2(-1, -1)
+
+[node name="Rumham" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(-4, 26)
+texture = ExtResource("2_arfih")

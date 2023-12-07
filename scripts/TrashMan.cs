@@ -9,13 +9,21 @@ public partial class TrashMan : CharacterBody2D
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
 	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 
+	private AnimatedSprite2D _animatedSprite;
+	
+	private String _sceneName;
+	
+	public override void _Ready()
+	{
+		// Access to animation globally
+		_animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		_sceneName = GetTree().CurrentScene.Name;
+		_animatedSprite.Play("idle");
+	}
 	public override void _PhysicsProcess(double delta)
 	{
 		Vector2 velocity = Velocity;
 
-		// Add the gravity.
-		if (!IsOnFloor())
-			velocity.Y += gravity * (float)delta;
 
 		// Handle Jump.
 		if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
@@ -27,10 +35,12 @@ public partial class TrashMan : CharacterBody2D
 		if (direction != Vector2.Zero)
 		{
 			velocity.X = direction.X * Speed;
+			velocity.Y = direction.Y * Speed;
 		}
 		else
 		{
 			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
+			velocity.Y = Mathf.MoveToward(Velocity.Y, 0, Speed);
 		}
 
 		Velocity = velocity;
