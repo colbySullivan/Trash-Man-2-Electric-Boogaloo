@@ -42,7 +42,14 @@ public partial class TrashMan : CharacterBody2D
 			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
 			velocity.Y = Mathf.MoveToward(Velocity.Y, 0, Speed);
 		}
-
+		if(velocity.X < 0)
+			_animatedSprite.FlipH = true;
+		if(velocity.X > 0)
+			_animatedSprite.FlipH = false;
+		if(velocity.Y < 0)
+			_animatedSprite.FlipV = true;
+		if(velocity.Y > 0)
+			_animatedSprite.FlipV = false;
 		Velocity = velocity;
 		MoveAndSlide();
 	}
