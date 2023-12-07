@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="The Trash Man 2: Electric Boogaloo"
-config/features=PackedStringArray("4.1", "Forward Plus")
+config/features=PackedStringArray("4.1", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
 [dotnet]
 
 project/assembly_name="The Trash Man 2- Electric Boogaloo"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg")
