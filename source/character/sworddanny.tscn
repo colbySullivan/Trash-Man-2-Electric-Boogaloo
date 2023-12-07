@@ -1,0 +1,144 @@
+[gd_scene load_steps=17 format=3 uid="uid://dsxjhi2giui2f"]
+
+[ext_resource type="Script" path="res://character/sworddanny.cs" id="1_x14lv"]
+[ext_resource type="Texture2D" uid="uid://wlnn7c66m3s2" path="res://character/trashFight.png" id="2_1thgh"]
+[ext_resource type="Texture2D" uid="uid://bc3kwpskj2d10" path="res://character/trashIdle.png" id="2_oy7rw"]
+[ext_resource type="Script" path="res://character/CollisionShape2D.cs" id="10_rq420"]
+[ext_resource type="Texture2D" uid="uid://dgw4ggqngiofs" path="res://src/pngegg (1).png" id="11_nghr7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h7ovl"]
+size = Vector2(14, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ywgav"]
+atlas = ExtResource("2_1thgh")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aa1dg"]
+atlas = ExtResource("2_1thgh")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hkjy3"]
+atlas = ExtResource("2_1thgh")
+region = Rect2(0, 96, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tvh51"]
+atlas = ExtResource("2_oy7rw")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bac4f"]
+atlas = ExtResource("2_oy7rw")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kbx1p"]
+atlas = ExtResource("2_oy7rw")
+region = Rect2(0, 96, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_52284"]
+atlas = ExtResource("2_oy7rw")
+region = Rect2(96, 96, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ty3v4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ywgav")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aa1dg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hkjy3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hkjy3")
+}],
+"loop": true,
+"name": &"fight",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tvh51")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bac4f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kbx1p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_52284")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m5jyf"]
+size = Vector2(16.8594, 23.25)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vj6ej"]
+radius = 8.0
+height = 18.0
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+position = Vector2(11, 20)
+script = ExtResource("1_x14lv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 9)
+shape = SubResource("RectangleShape2D_h7ovl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-33, -27)
+scale = Vector2(0.71875, 0.729167)
+sprite_frames = SubResource("SpriteFrames_ty3v4")
+animation = &"fight"
+frame_progress = 0.113065
+centered = false
+metadata/_aseprite_wizard_config_ = {
+"layer": "",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"op_exp": false,
+"source": "res://src/sprites/trashFight.aseprite"
+}
+
+[node name="SwordArea" type="Area2D" parent="."]
+position = Vector2(1, 9)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SwordArea"]
+position = Vector2(15.5703, 2)
+shape = SubResource("RectangleShape2D_m5jyf")
+disabled = true
+script = ExtResource("10_rq420")
+
+[node name="AreaHitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaHitbox"]
+light_mask = 5
+visibility_layer = 5
+position = Vector2(1, 9)
+shape = SubResource("CapsuleShape2D_vj6ej")
+
+[node name="Health1" type="Sprite2D" parent="."]
+position = Vector2(-7, -11)
+scale = Vector2(0.015625, 0.012207)
+texture = ExtResource("11_nghr7")
+
+[node name="Health2" type="Sprite2D" parent="Health1"]
+position = Vector2(512, -0.000488281)
+scale = Vector2(0.925526, 0.967034)
+texture = ExtResource("11_nghr7")
+
+[node name="Health3" type="Sprite2D" parent="Health1/Health2"]
+position = Vector2(553.188, 0.000488281)
+scale = Vector2(1.07007, 1.0253)
+texture = ExtResource("11_nghr7")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
+[connection signal="body_entered" from="AreaHitbox" to="." method="_on_area_hitbox_body_entered"]
