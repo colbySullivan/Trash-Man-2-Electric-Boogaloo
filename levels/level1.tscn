@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dy6lqqkww8rpb"]
+[gd_scene load_steps=4 format=3 uid="uid://dy6lqqkww8rpb"]
 
 [ext_resource type="PackedScene" uid="uid://cod82k8mo8rxq" path="res://pc/trash_man.tscn" id="1_diaur"]
 [ext_resource type="Texture2D" uid="uid://drgcjoq00fnf2" path="res://src/rumham.png" id="2_arfih"]
+[ext_resource type="Script" path="res://levels/TileMap.gd" id="3_1rvvd"]
 
 [node name="level1" type="Node2D"]
 position = Vector2(-5, -2)
@@ -16,3 +17,7 @@ position = Vector2(-1, -1)
 z_index = -1
 position = Vector2(-4, 26)
 texture = ExtResource("2_arfih")
+
+[node name="TileMap" type="TileMap" parent="."]
+format = 2
+script = ExtResource("3_1rvvd")
