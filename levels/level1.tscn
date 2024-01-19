@@ -1,41 +1,41 @@
-[gd_scene load_steps=8 format=3 uid="uid://dy6lqqkww8rpb"]
+[gd_scene load_steps=6 format=3 uid="uid://dy6lqqkww8rpb"]
 
 [ext_resource type="PackedScene" uid="uid://cod82k8mo8rxq" path="res://pc/trash_man.tscn" id="1_diaur"]
-[ext_resource type="Texture2D" uid="uid://drgcjoq00fnf2" path="res://src/rumham.png" id="2_arfih"]
 [ext_resource type="Script" path="res://levels/TileMap.gd" id="3_1rvvd"]
-[ext_resource type="Texture2D" uid="uid://vjig5p26pwdn" path="res://src/color-grid.png" id="3_fgbqf"]
+[ext_resource type="Texture2D" uid="uid://j8b0apre2rvh" path="res://src/tiles2.png" id="4_4lh6l"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wdmmb"]
-texture = ExtResource("3_fgbqf")
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_efx8t"]
-texture = ExtResource("3_fgbqf")
-use_texture_padding = false
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bw0lc"]
+texture = ExtResource("4_4lh6l")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_vqnky"]
-sources/6 = SubResource("TileSetAtlasSource_wdmmb")
-sources/7 = SubResource("TileSetAtlasSource_efx8t")
+sources/1 = SubResource("TileSetAtlasSource_bw0lc")
 
 [node name="level1" type="Node2D"]
 position = Vector2(-5, -2)
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_vqnky")
+format = 2
+script = ExtResource("3_1rvvd")
 
 [node name="TrashMan" parent="." instance=ExtResource("1_diaur")]
 position = Vector2(-1, 0)
 
 [node name="Camera2D" type="Camera2D" parent="TrashMan"]
 position = Vector2(-1, -1)
-
-[node name="Rumham" type="Sprite2D" parent="."]
-visible = false
-z_index = -1
-position = Vector2(-4, 26)
-texture = ExtResource("2_arfih")
-
-[node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource("TileSet_vqnky")
-format = 2
-script = ExtResource("3_1rvvd")
-map_w = 72
-map_h = 42
-min_room_size = 9
-min_room_factor = 0.45
