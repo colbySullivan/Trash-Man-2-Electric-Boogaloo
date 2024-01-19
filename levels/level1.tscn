@@ -24,7 +24,7 @@ texture = ExtResource("4_4lh6l")
 3:3/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_vqnky"]
-sources/1 = SubResource("TileSetAtlasSource_bw0lc")
+sources/0 = SubResource("TileSetAtlasSource_bw0lc")
 
 [node name="level1" type="Node2D"]
 position = Vector2(-5, -2)
