@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dy6lqqkww8rpb"]
 
 [ext_resource type="PackedScene" uid="uid://cod82k8mo8rxq" path="res://pc/trash_man.tscn" id="1_diaur"]
-[ext_resource type="Script" path="res://levels/TileMap.gd" id="3_1rvvd"]
+[ext_resource type="Script" path="res://levels/TileMap.cs" id="2_hkjau"]
 [ext_resource type="Texture2D" uid="uid://j8b0apre2rvh" path="res://src/tiles2.png" id="4_4lh6l"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bw0lc"]
@@ -70,7 +70,7 @@ position = Vector2(-5, -2)
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_vqnky")
 format = 2
-script = ExtResource("3_1rvvd")
+script = ExtResource("2_hkjau")
 
 [node name="TrashMan" parent="." instance=ExtResource("1_diaur")]
 position = Vector2(-1, 0)
