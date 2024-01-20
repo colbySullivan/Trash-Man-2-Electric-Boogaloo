@@ -35,7 +35,7 @@ public partial class TileMap : Godot.TileMap
 				var moist = moisture.GetNoise2D(tile_pos.X-width/2 + x, tile_pos.Y-height/2 + y)*10;
 				var temp = temperature.GetNoise2D(tile_pos.X-width/2 + x, tile_pos.Y-height/2 + y)*10;
 				var alt = altitude.GetNoise2D(tile_pos.X-width/2 + x, tile_pos.Y-height/2 + y)*10;
-				SetCell(0, new Vector2I((tile_pos.X-64)+x, (tile_pos.Y-64)+y), 0, new Vector2I((int)(moist+10)/5, (int)(temp+10)/5));
+				SetCell(0, new Vector2I((tile_pos.X-width/2)+x, (tile_pos.Y-height/2)+y), 0, new Vector2I((int)(moist+10)/5, (int)(temp+10)/5));
 			}
 		}
 	}
