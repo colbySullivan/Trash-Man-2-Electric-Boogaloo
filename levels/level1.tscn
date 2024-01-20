@@ -72,8 +72,8 @@ tile_set = SubResource("TileSet_vqnky")
 format = 2
 script = ExtResource("2_hkjau")
 
-[node name="TrashMan" parent="." instance=ExtResource("1_diaur")]
+[node name="TrashMan" parent="TileMap" instance=ExtResource("1_diaur")]
 position = Vector2(-1, 0)
 
-[node name="Camera2D" type="Camera2D" parent="TrashMan"]
+[node name="Camera2D" type="Camera2D" parent="TileMap/TrashMan"]
 position = Vector2(-1, -1)

@@ -8,6 +8,7 @@ public partial class TileMap : Godot.TileMap
 	public FastNoiseLite altitude = new FastNoiseLite();
 	public const int width = 128;
 	public const int height = 128;
+	private CharacterBody2D player { get; set; }
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -21,8 +22,11 @@ public partial class TileMap : Godot.TileMap
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		CharacterBody2D player = (CharacterBody2D)GetNode("TrashMan");
+		this.player = this.GetNode<CharacterBody2D>("TrashMan");
+		GD.Print(player.Position);
+		
 		generate_chunk(player.Position);
+		
 	}
 	
 	public void generate_chunk(Vector2 position)
@@ -37,7 +41,10 @@ public partial class TileMap : Godot.TileMap
 				vec = new Vector2I((int)tile_pos.X-width/2 + x, (int)tile_pos.Y-height/2 + y);
 				Vector2I vec2;
 				vec2 = new Vector2I((int)Math.Round((moist+10)/5), (int)Math.Round((temp+10)/5));
+				// vec2 = new Vector2I(0,0);
+				// vec = new Vector2I(0,0);
 				SetCell(0, vec, 0, vec2);
+				
 			}
 		}
 	}
