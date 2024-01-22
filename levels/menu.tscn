@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqlyuq66fhwsb"]
+
+[ext_resource type="Script" path="res://levels/menu.cs" id="1_6eika"]
+[ext_resource type="Script" path="res://levels/Start.cs" id="2_64v7x"]
+[ext_resource type="Script" path="res://levels/Quit.cs" id="3_k80e4"]
+
+[node name="menu" type="Node2D"]
+script = ExtResource("1_6eika")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Start" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Start"
+script = ExtResource("2_64v7x")
+
+[node name="Quit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+script = ExtResource("3_k80e4")
