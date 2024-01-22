@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqlyuq66fhwsb"]
+
+[ext_resource type="Script" path="res://scripts/menu.cs" id="1_04gd5"]
+[ext_resource type="Script" path="res://scripts/Start.cs" id="2_pjlei"]
+[ext_resource type="Script" path="res://scripts/Quit.cs" id="3_to4l5"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 489.0
+offset_top = 344.0
+offset_right = 489.0
+offset_bottom = 344.0
+script = ExtResource("1_04gd5")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Start" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Start"
+script = ExtResource("2_pjlei")
+
+[node name="Quit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+script = ExtResource("3_to4l5")
+
+[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
