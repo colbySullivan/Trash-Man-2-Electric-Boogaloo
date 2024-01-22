@@ -1,40 +1,59 @@
-[gd_scene load_steps=9 format=3 uid="uid://cod82k8mo8rxq"]
+[gd_scene load_steps=11 format=3 uid="uid://cod82k8mo8rxq"]
 
 [ext_resource type="Script" path="res://scripts/TrashMan.cs" id="1_r3d1f"]
-[ext_resource type="Texture2D" uid="uid://c5jlxofn5nttp" path="res://pc/trashIdle.png" id="2_wsfxd"]
+[ext_resource type="Texture2D" uid="uid://duqcpw2wyta5c" path="res://pc/trashFight.png" id="2_dfi58"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_87j2e"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3eepe"]
-atlas = ExtResource("2_wsfxd")
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5jvv"]
+atlas = ExtResource("2_dfi58")
 region = Rect2(0, 0, 96, 96)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6wau6"]
-atlas = ExtResource("2_wsfxd")
+[sub_resource type="AtlasTexture" id="AtlasTexture_5qqh7"]
+atlas = ExtResource("2_dfi58")
 region = Rect2(96, 0, 96, 96)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nj3hl"]
-atlas = ExtResource("2_wsfxd")
+[sub_resource type="AtlasTexture" id="AtlasTexture_oxmdi"]
+atlas = ExtResource("2_dfi58")
 region = Rect2(0, 96, 96, 96)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0plcd"]
-atlas = ExtResource("2_wsfxd")
-region = Rect2(96, 96, 96, 96)
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ubk6"]
+atlas = ExtResource("2_dfi58")
+region = Rect2(0, 0, 96, 96)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_tju0t"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_nfbtd"]
+atlas = ExtResource("2_dfi58")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rkdsb"]
+atlas = ExtResource("2_dfi58")
+region = Rect2(0, 96, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jl3ac"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3eepe")
+"texture": SubResource("AtlasTexture_i5jvv")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6wau6")
+"texture": SubResource("AtlasTexture_5qqh7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nj3hl")
+"texture": SubResource("AtlasTexture_oxmdi")
+}],
+"loop": true,
+"name": &"fight",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ubk6")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0plcd")
+"texture": SubResource("AtlasTexture_nfbtd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rkdsb")
 }],
 "loop": true,
 "name": &"idle",
@@ -53,7 +72,7 @@ shape = SubResource("RectangleShape2D_87j2e")
 texture_filter = 1
 position = Vector2(2, 3)
 scale = Vector2(0.729167, 0.677083)
-sprite_frames = SubResource("SpriteFrames_tju0t")
+sprite_frames = SubResource("SpriteFrames_jl3ac")
 animation = &"idle"
 metadata/_aseprite_wizard_config_ = {
 "layer": "",
@@ -61,6 +80,6 @@ metadata/_aseprite_wizard_config_ = {
 "o_folder": "",
 "o_name": "",
 "only_visible": false,
-"op_exp": false,
-"source": "res://src/sprites/trashIdle.aseprite"
+"op_exp": true,
+"source": "res://src/sprites/trashFight.aseprite"
 }
