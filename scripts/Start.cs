@@ -14,6 +14,6 @@ public partial class Start : Button
 	}
 	private void _on_pressed()
 	{
-		GetTree().ChangeSceneToFile("res://Levels/jump_level.tscn");
+		GetTree().ChangeSceneToFile("res://levels/level1.tscn");
 	}
 }
