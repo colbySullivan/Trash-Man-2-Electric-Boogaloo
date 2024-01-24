@@ -27,6 +27,7 @@ public partial class TrashMan : CharacterBody2D
 		_animatedSwordSprite = GetNode<AnimatedSprite2D>("SwordAnimation");
 		_sceneName = GetTree().CurrentScene.Name;
 		_animatedSprite.Play("idle");
+		_animatedSwordSprite.Play("default");
 	}
 	public override void _PhysicsProcess(double delta)
 	{

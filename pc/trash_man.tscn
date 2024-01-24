@@ -1,10 +1,10 @@
 [gd_scene load_steps=25 format=3 uid="uid://cod82k8mo8rxq"]
 
 [ext_resource type="Script" path="res://scripts/TrashMan.cs" id="1_r3d1f"]
-[ext_resource type="Texture2D" path="res://pc/trashFight.png" id="2_dfi58"]
+[ext_resource type="Texture2D" uid="uid://duqcpw2wyta5c" path="res://pc/trashFight.png" id="2_dfi58"]
 [ext_resource type="Texture2D" uid="uid://c5jlxofn5nttp" path="res://pc/trashIdle.png" id="2_wsfxd"]
-[ext_resource type="Texture2D" path="res://pc/idledown.png" id="4_gi0ma"]
-[ext_resource type="Texture2D" path="res://pc/idleup.png" id="5_t6sof"]
+[ext_resource type="Texture2D" uid="uid://jreiytvyti6c" path="res://pc/idledown.png" id="4_gi0ma"]
+[ext_resource type="Texture2D" uid="uid://o1cpysuokfbk" path="res://pc/idleup.png" id="5_t6sof"]
 [ext_resource type="Script" path="res://pc/CollisionShape2D.cs" id="6_ixx80"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_87j2e"]
@@ -185,6 +185,7 @@ metadata/_aseprite_wizard_config_ = {
 
 [node name="SwordAnimation" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+position = Vector2(27, 1)
 sprite_frames = SubResource("SpriteFrames_ls1kq")
 metadata/_aseprite_wizard_config_ = {
 "layer": "",
