@@ -26,8 +26,8 @@ public partial class TrashMan : CharacterBody2D
 
 
 		// Handle trash wack
-		if (Input.IsActionPressed("fight"))
-			_animatedSprite.Play("fight");
+		//if (Input.IsActionPressed("fight"))
+		//	_animatedSprite.Play("fight");
 		//else
 			//_animatedSprite.Play("idle");
 
@@ -66,5 +66,25 @@ public partial class TrashMan : CharacterBody2D
 		}	
 		Velocity = velocity;
 		MoveAndSlide();
+		swing_sword();
+	}
+	public void swing_sword()
+	{
+		var node = GetNode<CollisionShape2D>("SwordArea/CollisionShape2D");
+		// Sword starts to the right
+		//node.Position = node.right;
+		if (Input.IsActionJustPressed("fight"))
+		{
+			// Lock movement and animation
+			_animatedSprite.Play("fight");
+			// Renable sword area hitbox
+			node.Disabled = false;
+		}
+		else
+			node.Disabled = true;
+	}
+	private void _on_animated_sprite_2d_animation_finished()
+	{
+		_animatedSprite.Play("idle");
 	}
 }
