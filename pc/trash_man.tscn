@@ -157,7 +157,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hw2rq"]
-size = Vector2(56, 49)
+size = Vector2(56, 55)
 
 [node name="TrashMan" type="CharacterBody2D"]
 position = Vector2(-79, -45)
@@ -200,7 +200,7 @@ metadata/_aseprite_wizard_config_ = {
 [node name="SwordArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SwordArea"]
-position = Vector2(1, 4.5)
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_hw2rq")
 script = ExtResource("6_ixx80")
 
