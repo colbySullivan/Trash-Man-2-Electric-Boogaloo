@@ -25,9 +25,11 @@ public partial class TrashMan : CharacterBody2D
 		Vector2 velocity = Velocity;
 
 
-		// Handle Jump.
-		if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
-			velocity.Y = JumpVelocity;
+		// Handle trash wack
+		if (Input.IsActionPressed("fight"))
+			_animatedSprite.Play("fight");
+		else
+			_animatedSprite.Play("idle");
 
 		// Get the input direction and handle the movement/deceleration.
 		// As good practice, you should replace UI actions with custom gameplay actions.
