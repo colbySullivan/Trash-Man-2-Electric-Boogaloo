@@ -13,12 +13,15 @@ public partial class TrashMan : CharacterBody2D
 	
 	private String _sceneName;
 	
+	public CollisionShape2D _sword;
+	
 	public override void _Ready()
 	{
 		// Access to animation globally
 		_animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		_sceneName = GetTree().CurrentScene.Name;
 		_animatedSprite.Play("idle");
+		_sword = GetNode<CollisionShape2D>("SwordArea/CollisionShape2D");
 	}
 	public override void _PhysicsProcess(double delta)
 	{
@@ -70,7 +73,6 @@ public partial class TrashMan : CharacterBody2D
 	}
 	public void swing_sword()
 	{
-		var node = GetNode<CollisionShape2D>("SwordArea/CollisionShape2D");
 		// Sword starts to the right
 		//node.Position = node.right;
 		if (Input.IsActionJustPressed("fight"))
@@ -78,13 +80,13 @@ public partial class TrashMan : CharacterBody2D
 			// Lock movement and animation
 			_animatedSprite.Play("fight");
 			// Renable sword area hitbox
-			node.Disabled = false;
+			_sword.Disabled = false;
 		}
-		else
-			node.Disabled = true;
 	}
 	private void _on_animated_sprite_2d_animation_finished()
 	{
 		_animatedSprite.Play("idle");
+		// Hide sword hitbox
+		_sword.Disabled = true;
 	}
 }
