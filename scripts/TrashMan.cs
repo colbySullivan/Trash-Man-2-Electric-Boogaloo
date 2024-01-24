@@ -19,20 +19,14 @@ public partial class TrashMan : CharacterBody2D
 	{
 		// Access to animation globally
 		_animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		// Access to sword node globally
+		_sword = GetNode<CollisionShape2D>("SwordArea/CollisionShape2D");
 		_sceneName = GetTree().CurrentScene.Name;
 		_animatedSprite.Play("idle");
-		_sword = GetNode<CollisionShape2D>("SwordArea/CollisionShape2D");
 	}
 	public override void _PhysicsProcess(double delta)
 	{
 		Vector2 velocity = Velocity;
-
-
-		// Handle trash wack
-		//if (Input.IsActionPressed("fight"))
-		//	_animatedSprite.Play("fight");
-		//else
-			//_animatedSprite.Play("idle");
 
 		// Get the input direction and handle the movement/deceleration.
 		// As good practice, you should replace UI actions with custom gameplay actions.
@@ -47,21 +41,25 @@ public partial class TrashMan : CharacterBody2D
 			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
 			velocity.Y = Mathf.MoveToward(Velocity.Y, 0, Speed);
 		}
+		// User goes left
 		if(velocity.X < 0)
 		{
 			_animatedSprite.Play("idle");
 			_animatedSprite.FlipH = true;
 		}	
+		// User goes right
 		if(velocity.X > 0)
 		{
 			_animatedSprite.Play("idle");
 			_animatedSprite.FlipH = false;
 		}	
+		// User goes up
 		if(velocity.Y < 0)
 		{
 			_animatedSprite.Play("idleup");
 			//_animatedSprite.FlipV = true;
 		}
+		// User goes down
 		if(velocity.Y > 0)
 		{
 			_animatedSprite.Play("idledown");
@@ -73,11 +71,9 @@ public partial class TrashMan : CharacterBody2D
 	}
 	public void swing_sword()
 	{
-		// Sword starts to the right
-		//node.Position = node.right;
 		if (Input.IsActionJustPressed("fight"))
 		{
-			// Lock movement and animation
+			// Start fight animation
 			_animatedSprite.Play("fight");
 			// Renable sword area hitbox
 			_sword.Disabled = false;
@@ -85,6 +81,7 @@ public partial class TrashMan : CharacterBody2D
 	}
 	private void _on_animated_sprite_2d_animation_finished()
 	{
+		// Return to idle position
 		_animatedSprite.Play("idle");
 		// Hide sword hitbox
 		_sword.Disabled = true;
