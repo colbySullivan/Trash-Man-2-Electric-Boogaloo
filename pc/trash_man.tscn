@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://cod82k8mo8rxq"]
 
 [ext_resource type="Script" path="res://scripts/TrashMan.cs" id="1_r3d1f"]
-[ext_resource type="Texture2D" uid="uid://duqcpw2wyta5c" path="res://pc/trashFight.png" id="2_dfi58"]
+[ext_resource type="Texture2D" path="res://pc/trashFight.png" id="2_dfi58"]
 [ext_resource type="Texture2D" uid="uid://c5jlxofn5nttp" path="res://pc/trashIdle.png" id="2_wsfxd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_87j2e"]
@@ -88,7 +88,7 @@ texture_filter = 1
 position = Vector2(2, 3)
 scale = Vector2(0.729167, 0.677083)
 sprite_frames = SubResource("SpriteFrames_jl3ac")
-animation = &"idle"
+animation = &"fight"
 metadata/_aseprite_wizard_config_ = {
 "layer": "",
 "o_ex_p": "",
