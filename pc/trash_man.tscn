@@ -1,8 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://cod82k8mo8rxq"]
+[gd_scene load_steps=25 format=3 uid="uid://cod82k8mo8rxq"]
 
 [ext_resource type="Script" path="res://scripts/TrashMan.cs" id="1_r3d1f"]
-[ext_resource type="Texture2D" path="res://pc/trashFight.png" id="2_dfi58"]
+[ext_resource type="Texture2D" uid="uid://duqcpw2wyta5c" path="res://pc/trashFight.png" id="2_dfi58"]
 [ext_resource type="Texture2D" uid="uid://c5jlxofn5nttp" path="res://pc/trashIdle.png" id="2_wsfxd"]
+[ext_resource type="Texture2D" uid="uid://jreiytvyti6c" path="res://pc/idledown.png" id="4_gi0ma"]
+[ext_resource type="Texture2D" uid="uid://o1cpysuokfbk" path="res://pc/idleup.png" id="5_t6sof"]
+[ext_resource type="Script" path="res://pc/CollisionShape2D.cs" id="6_ixx80"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_87j2e"]
 
@@ -38,6 +41,30 @@ region = Rect2(0, 96, 96, 96)
 atlas = ExtResource("2_wsfxd")
 region = Rect2(96, 96, 96, 96)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_fbh5p"]
+atlas = ExtResource("4_gi0ma")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6xfyy"]
+atlas = ExtResource("4_gi0ma")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vs7do"]
+atlas = ExtResource("4_gi0ma")
+region = Rect2(0, 96, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u8igo"]
+atlas = ExtResource("5_t6sof")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ec5n3"]
+atlas = ExtResource("5_t6sof")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7gq7"]
+atlas = ExtResource("5_t6sof")
+region = Rect2(0, 96, 96, 96)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_jl3ac"]
 animations = [{
 "frames": [{
@@ -72,8 +99,65 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fbh5p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6xfyy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fbh5p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vs7do")
+}],
+"loop": true,
+"name": &"idledown",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u8igo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ec5n3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u8igo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a7gq7")
+}],
+"loop": true,
+"name": &"idleup",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ls1kq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u8igo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ec5n3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u8igo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a7gq7")
+}],
+"loop": true,
+"name": &"default",
 "speed": 10.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hw2rq"]
+size = Vector2(56, 49)
 
 [node name="TrashMan" type="CharacterBody2D"]
 position = Vector2(-79, -45)
@@ -88,7 +172,7 @@ texture_filter = 1
 position = Vector2(2, 3)
 scale = Vector2(0.729167, 0.677083)
 sprite_frames = SubResource("SpriteFrames_jl3ac")
-animation = &"fight"
+animation = &"idleup"
 metadata/_aseprite_wizard_config_ = {
 "layer": "",
 "o_ex_p": "",
@@ -98,3 +182,27 @@ metadata/_aseprite_wizard_config_ = {
 "op_exp": true,
 "source": "res://src/sprites/trashFight.aseprite"
 }
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+visible = false
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_ls1kq")
+metadata/_aseprite_wizard_config_ = {
+"layer": "",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"op_exp": false,
+"source": "res://src/sprites/idleup.aseprite"
+}
+
+[node name="SwordArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SwordArea"]
+position = Vector2(1, 4.5)
+shape = SubResource("RectangleShape2D_hw2rq")
+script = ExtResource("6_ixx80")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

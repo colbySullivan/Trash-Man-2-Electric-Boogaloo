@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://cg1x3mbfr8ekt"
+path="res://.godot/imported/idleup.aseprite-985f13b08f6dd1bf128b7eb84f00d1c4.res"
+
+[deps]
+
+source_file="res://src/sprites/idleup.aseprite"
+dest_files=["res://.godot/imported/idleup.aseprite-985f13b08f6dd1bf128b7eb84f00d1c4.res"]
+
+[params]
+
