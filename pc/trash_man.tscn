@@ -1,11 +1,16 @@
-[gd_scene load_steps=25 format=3 uid="uid://cod82k8mo8rxq"]
+[gd_scene load_steps=30 format=3 uid="uid://cod82k8mo8rxq"]
 
 [ext_resource type="Script" path="res://scripts/TrashMan.cs" id="1_r3d1f"]
 [ext_resource type="Texture2D" uid="uid://duqcpw2wyta5c" path="res://pc/trashFight.png" id="2_dfi58"]
 [ext_resource type="Texture2D" uid="uid://c5jlxofn5nttp" path="res://pc/trashIdle.png" id="2_wsfxd"]
 [ext_resource type="Texture2D" uid="uid://jreiytvyti6c" path="res://pc/idledown.png" id="4_gi0ma"]
 [ext_resource type="Texture2D" uid="uid://o1cpysuokfbk" path="res://pc/idleup.png" id="5_t6sof"]
+[ext_resource type="Texture2D" uid="uid://ctu1yfll5uar5" path="res://src/sprites/temp attack/trashFight - New1.png" id="6_ifqpm"]
 [ext_resource type="Script" path="res://pc/CollisionShape2D.cs" id="6_ixx80"]
+[ext_resource type="Texture2D" uid="uid://c8d7whrylwpp0" path="res://src/sprites/temp attack/trashFight - New2.png" id="7_ip88r"]
+[ext_resource type="Texture2D" uid="uid://dab6y3eyhlut5" path="res://src/sprites/temp attack/trashFight - New3.png" id="8_0q4ir"]
+[ext_resource type="Texture2D" uid="uid://do6ku4ro3xu2s" path="res://src/sprites/temp attack/trashFight - New4.png" id="9_hdg50"]
+[ext_resource type="Texture2D" uid="uid://ctecji66xn6wt" path="res://src/sprites/temp attack/trashFight - New5.png" id="10_fhrys"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_87j2e"]
 
@@ -140,20 +145,23 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_u8igo")
+"texture": ExtResource("6_ifqpm")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ec5n3")
+"texture": ExtResource("7_ip88r")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_u8igo")
+"texture": ExtResource("8_0q4ir")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_a7gq7")
+"texture": ExtResource("9_hdg50")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_fhrys")
 }],
 "loop": true,
 "name": &"default",
-"speed": 10.0
+"speed": 7.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hw2rq"]
@@ -172,7 +180,7 @@ texture_filter = 1
 position = Vector2(2, 3)
 scale = Vector2(0.729167, 0.677083)
 sprite_frames = SubResource("SpriteFrames_jl3ac")
-animation = &"idleup"
+animation = &"idle"
 metadata/_aseprite_wizard_config_ = {
 "layer": "",
 "o_ex_p": "",
@@ -184,9 +192,12 @@ metadata/_aseprite_wizard_config_ = {
 }
 
 [node name="SwordAnimation" type="AnimatedSprite2D" parent="."]
+visible = false
 texture_filter = 1
-position = Vector2(27, 1)
+position = Vector2(2, 2)
+scale = Vector2(0.666667, 0.692708)
 sprite_frames = SubResource("SpriteFrames_ls1kq")
+frame_progress = 0.821008
 metadata/_aseprite_wizard_config_ = {
 "layer": "",
 "o_ex_p": "",
@@ -194,7 +205,7 @@ metadata/_aseprite_wizard_config_ = {
 "o_name": "",
 "only_visible": false,
 "op_exp": false,
-"source": "res://src/sprites/idleup.aseprite"
+"source": "res://src/sprites/trashFight - New.aseprite"
 }
 
 [node name="SwordArea" type="Area2D" parent="."]

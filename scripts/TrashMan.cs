@@ -51,12 +51,14 @@ public partial class TrashMan : CharacterBody2D
 		{
 			_animatedSprite.Play("idle");
 			_animatedSprite.FlipH = true;
+			_animatedSwordSprite.FlipH = true;
 		}	
 		// User goes right
 		if(velocity.X > 0)
 		{
 			_animatedSprite.Play("idle");
 			_animatedSprite.FlipH = false;
+			_animatedSwordSprite.FlipH = false;
 		}	
 		// User goes up
 		if(velocity.Y < 0)
@@ -82,6 +84,7 @@ public partial class TrashMan : CharacterBody2D
 			_animatedSprite.Play("fight");
 			// Renable sword area hitbox
 			_sword.Disabled = false;
+			_animatedSprite.Visible = false;
 			_animatedSwordSprite.Visible = true;
 		}
 	}
@@ -91,6 +94,7 @@ public partial class TrashMan : CharacterBody2D
 		_animatedSprite.Play("idle");
 		// Hide sword hitbox
 		_sword.Disabled = true;
+		_animatedSprite.Visible = true;
 		_animatedSwordSprite.Visible = false;
 	}
 }
