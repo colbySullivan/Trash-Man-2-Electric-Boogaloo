@@ -301,7 +301,7 @@ texture_filter = 1
 position = Vector2(2, 2)
 scale = Vector2(0.666667, 0.692708)
 sprite_frames = SubResource("SpriteFrames_ls1kq")
-frame_progress = 0.653006
+animation = &"up"
 metadata/_aseprite_wizard_config_ = {
 "layer": "",
 "o_ex_p": "",
