@@ -85,17 +85,19 @@ public partial class TrashMan : CharacterBody2D
 		if (Input.IsActionJustPressed("fight"))
 		{
 			// Start fight animation
-			_animatedSprite.Play("fight");
+			//_animatedSprite.Play("fight");
 			// Renable sword area hitbox
+			_animatedSwordSprite.Stop();
+			_animatedSwordSprite.Play();
 			_sword.Disabled = false;
 			_animatedSprite.Visible = false;
 			_animatedSwordSprite.Visible = true;
 		}
 	}
-	private void _on_animated_sprite_2d_animation_finished()
+	public void _on_sword_animation_animation_finished()
 	{
 		// Return to idle position
-		_animatedSprite.Play("idle");
+		//_animatedSprite.Play("idle");
 		// Hide sword hitbox
 		_sword.Disabled = true;
 		_animatedSprite.Visible = true;

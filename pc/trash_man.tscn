@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://cod82k8mo8rxq"]
+[gd_scene load_steps=43 format=3 uid="uid://cod82k8mo8rxq"]
 
 [ext_resource type="Script" path="res://scripts/TrashMan.cs" id="1_r3d1f"]
 [ext_resource type="Texture2D" uid="uid://duqcpw2wyta5c" path="res://pc/trashFight.png" id="2_dfi58"]
@@ -15,18 +15,6 @@
 [ext_resource type="Texture2D" uid="uid://cx7miwvuy37we" path="res://pc/idleup-BagAttack.png" id="12_r47pv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_87j2e"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i5jvv"]
-atlas = ExtResource("2_dfi58")
-region = Rect2(0, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5qqh7"]
-atlas = ExtResource("2_dfi58")
-region = Rect2(96, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_oxmdi"]
-atlas = ExtResource("2_dfi58")
-region = Rect2(0, 96, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2ubk6"]
 atlas = ExtResource("2_dfi58")
@@ -82,20 +70,6 @@ region = Rect2(96, 96, 96, 96)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jl3ac"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i5jvv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5qqh7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_oxmdi")
-}],
-"loop": true,
-"name": &"fight",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2ubk6")
@@ -301,7 +275,6 @@ texture_filter = 1
 position = Vector2(2, 2)
 scale = Vector2(0.666667, 0.692708)
 sprite_frames = SubResource("SpriteFrames_ls1kq")
-animation = &"up"
 metadata/_aseprite_wizard_config_ = {
 "layer": "",
 "o_ex_p": "",
@@ -319,5 +292,4 @@ position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_hw2rq")
 script = ExtResource("6_ixx80")
 
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
-[connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="animation_looped" from="SwordAnimation" to="." method="_on_sword_animation_animation_finished"]
