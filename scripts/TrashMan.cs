@@ -50,6 +50,7 @@ public partial class TrashMan : CharacterBody2D
 		if(velocity.X < 0)
 		{
 			_animatedSprite.Play("idle");
+			_animatedSwordSprite.Play("default");
 			_animatedSprite.FlipH = true;
 			_animatedSwordSprite.FlipH = true;
 		}	
@@ -57,18 +58,21 @@ public partial class TrashMan : CharacterBody2D
 		if(velocity.X > 0)
 		{
 			_animatedSprite.Play("idle");
+			_animatedSwordSprite.Play("default");
 			_animatedSprite.FlipH = false;
 			_animatedSwordSprite.FlipH = false;
 		}	
 		// User goes up
 		if(velocity.Y < 0)
 		{
+			_animatedSwordSprite.Play("up");
 			_animatedSprite.Play("idleup");
 			//_animatedSprite.FlipV = true;
 		}
 		// User goes down
 		if(velocity.Y > 0)
 		{
+			_animatedSwordSprite.Play("down");
 			_animatedSprite.Play("idledown");
 			//_animatedSprite.FlipV = false;
 		}	
