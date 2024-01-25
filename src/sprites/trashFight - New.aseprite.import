@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://dm1be7iu0stqr"
+path="res://.godot/imported/trashFight - New.aseprite-f4e51e392441f9e7dae67e13a508538f.res"
+
+[deps]
+
+source_file="res://src/sprites/trashFight - New.aseprite"
+dest_files=["res://.godot/imported/trashFight - New.aseprite-f4e51e392441f9e7dae67e13a508538f.res"]
+
+[params]
+
