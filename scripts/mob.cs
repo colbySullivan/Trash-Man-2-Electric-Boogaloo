@@ -52,10 +52,6 @@ public partial class mob : CharacterBody2D
 	  	}
 		Vector2 velocity = Velocity;
 
-		// Add the gravity.
-		if (!IsOnFloor())
-			velocity.Y += gravity * (float)delta;
-
 		// User outside of fight area
 		if(attackState == "wonder")
 		{
