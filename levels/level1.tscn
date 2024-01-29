@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cod82k8mo8rxq" path="res://pc/trash_man.tscn" id="1_diaur"]
 [ext_resource type="Script" path="res://scripts/TileMap.cs" id="2_j58k3"]
 [ext_resource type="Texture2D" uid="uid://j8b0apre2rvh" path="res://src/tiles2.png" id="4_4lh6l"]
-[ext_resource type="PackedScene" uid="uid://decm1vbuouu33" path="res://npc/mob.tscn" id="4_mpmji"]
+[ext_resource type="PackedScene" uid="uid://bym18rutiea3" path="res://npc/mob.tscn" id="4_mpmji"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bw0lc"]
 texture = ExtResource("4_4lh6l")
