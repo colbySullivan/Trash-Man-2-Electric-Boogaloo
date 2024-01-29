@@ -140,4 +140,3 @@ public partial class mob : CharacterBody2D
 			
 	}
 }
-

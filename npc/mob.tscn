@@ -99,8 +99,8 @@ texture_filter = 1
 position = Vector2(0, 1)
 scale = Vector2(0.671875, 0.708333)
 sprite_frames = SubResource("SpriteFrames_55imf")
-animation = &"fight"
-frame_progress = 0.77082
+animation = &"idle"
+frame_progress = 0.126718
 metadata/_aseprite_wizard_config_ = {
 "layer": "",
 "o_ex_p": "",

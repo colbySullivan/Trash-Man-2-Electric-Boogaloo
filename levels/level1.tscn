@@ -68,9 +68,6 @@ sources/0 = SubResource("TileSetAtlasSource_bw0lc")
 [node name="level1" type="Node2D"]
 position = Vector2(-5, -2)
 
-[node name="mob" parent="." instance=ExtResource("4_mpmji")]
-position = Vector2(-44, -38)
-
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_vqnky")
 format = 2
@@ -82,3 +79,6 @@ position = Vector2(-1, 0)
 [node name="Camera2D" type="Camera2D" parent="TileMap/TrashMan"]
 position = Vector2(-1, -1)
 zoom = Vector2(5, 5)
+
+[node name="mob" parent="TileMap" instance=ExtResource("4_mpmji")]
+position = Vector2(123, -194)
