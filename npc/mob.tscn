@@ -1,6 +1,40 @@
-[gd_scene load_steps=2 format=3 uid="uid://decm1vbuouu33"]
+[gd_scene load_steps=7 format=3 uid="uid://decm1vbuouu33"]
+
+[ext_resource type="Texture2D" uid="uid://co7xn2b4fdej2" path="res://npc/trashybag.png" id="1_grmwf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e3wyy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qsy44"]
+atlas = ExtResource("1_grmwf")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtvlb"]
+atlas = ExtResource("1_grmwf")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1c74i"]
+atlas = ExtResource("1_grmwf")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fwc8b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qsy44")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qtvlb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qsy44")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1c74i")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 
@@ -8,3 +42,17 @@
 shape = SubResource("RectangleShape2D_e3wyy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1, -3)
+scale = Vector2(0.875, 0.8125)
+sprite_frames = SubResource("SpriteFrames_fwc8b")
+frame_progress = 0.815929
+metadata/_aseprite_wizard_config_ = {
+"layer": "",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"op_exp": false,
+"source": "res://src/sprites/trashybag.aseprite"
+}
