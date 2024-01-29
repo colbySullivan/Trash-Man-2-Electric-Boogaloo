@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://decm1vbuouu33"]
+[gd_scene load_steps=8 format=3 uid="uid://decm1vbuouu33"]
 
 [ext_resource type="Texture2D" uid="uid://co7xn2b4fdej2" path="res://npc/trashybag.png" id="1_grmwf"]
+[ext_resource type="Script" path="res://scripts/mob.cs" id="1_re52x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e3wyy"]
 
@@ -36,7 +37,8 @@ animations = [{
 "speed": 7.0
 }]
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="mob" type="CharacterBody2D"]
+script = ExtResource("1_re52x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_e3wyy")
