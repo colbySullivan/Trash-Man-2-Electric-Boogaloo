@@ -24,6 +24,7 @@ public partial class mob : CharacterBody2D
 	public Vector2 playerPos = new Vector2(0,0);
 	
 	public AnimatedSprite2D _animatedSprite;
+	public CharacterBody2D _trashman;
 	//public AnimatedSprite2D _animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 	
 	Random r = new Random();
@@ -34,14 +35,11 @@ public partial class mob : CharacterBody2D
 	public override void _Ready()
 	{
 		_animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		_trashman = GetParent().GetNode<CharacterBody2D>("TrashMan");
 		_animatedSprite.Play("idle");
 	}
 	public override void _PhysicsProcess(double delta)
 	{
-		//var dannynode = GetTree().GetRoot().GetNode("Character");
-		//onready var player := get_tree().get_root().get_node("Main2D").get_node("Player")
-		//GD.Print(dannynode.Position);
-		//Vector2 buffer = dannynode.Position;
 		if (timer) {
 		  time += delta;
 		  // Change danny state every 2 seconds
@@ -51,7 +49,6 @@ public partial class mob : CharacterBody2D
 		  }
 	  	}
 		Vector2 velocity = Velocity;
-
 		// User outside of fight area
 		if(attackState == "wonder")
 		{
@@ -71,15 +68,11 @@ public partial class mob : CharacterBody2D
 		// User entered left area
 		else if(attackState == "fightLeft")
 		{
-			//_animatedSprite.Play("left"); // New garbage bag mobs only have one animation
-			//_animatedSprite.FlipH = false;
 			velocity.X = SpeedLeft;
 		}
 		// User entered right area
 		else if(attackState == "fightRight")
 		{
-			// _animatedSprite.Play("right");
-			//_animatedSprite.FlipH = true;
 			velocity.X = SpeedRight;
 		}
 			
@@ -101,13 +94,13 @@ public partial class mob : CharacterBody2D
 		if(body.Name == "sworddanny") // Insures that other collisons don't count
 		{
 			_animatedSprite.Play("fight");
-			attackState = "fightLeft";	
+			attackState = "fightLeft";
 		} 
 			
 	}
 	private void _on_interaction_area_body_exited(Node2D body)
 	{
-		if(body.Name == "sworddanny")
+		if(body.Name == "TrashMan")
 		{
 			_animatedSprite.Play("fight");
 			attackState = "wonder";
@@ -117,7 +110,7 @@ public partial class mob : CharacterBody2D
 	// Character on right of danny
 	private void _on_attack_range_body_entered_right(Node2D body)
 	{
-		if(body.Name == "sworddanny")
+		if(body.Name == "TrashMan")
 		{
 			_animatedSprite.Play("fight");
 			attackState = "fightRight";
@@ -128,7 +121,7 @@ public partial class mob : CharacterBody2D
 	{
 		// Character stomped on Danny
 		//GD.Print(body.Name); // Leave for debugging
-		if(body.Name == "sworddanny")
+		if(body.Name == "TrashMan")
 		{
 			_animatedSprite.Play("fight");
 			QueueFree();

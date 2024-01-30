@@ -141,9 +141,6 @@ shape = SubResource("RectangleShape2D_gsypa")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_shape_entered" from="interactionArea" to="." method="_on_interaction_area_area_shape_entered"]
-[connection signal="body_entered" from="interactionArea" to="." method="_on_interaction_area_body_entered"]
 [connection signal="body_entered" from="AttackRangeRight" to="." method="_on_attack_range_body_entered_right"]
-[connection signal="body_exited" from="AttackRangeRight" to="." method="_on_interaction_area_body_exited"]
 [connection signal="body_entered" from="AttackRangeLeft" to="." method="_on_attack_range_body_entered_left"]
-[connection signal="body_exited" from="AttackRangeLeft" to="." method="_on_interaction_area_body_exited"]
 [connection signal="body_entered" from="StompArea" to="." method="_on_stomp_area_body_entered"]
