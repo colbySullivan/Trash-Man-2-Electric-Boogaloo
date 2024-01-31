@@ -66,14 +66,9 @@ public partial class mob : CharacterBody2D
 			
 		}
 		// User entered left area
-		else if(attackState == "fightLeft")
+		else if(attackState == "fight")
 		{
-			velocity.X = SpeedLeft;
-		}
-		// User entered right area
-		else if(attackState == "fightRight")
-		{
-			velocity.X = SpeedRight;
+			 Position += (_trashman.Position - Position)/50;
 		}
 			
 
@@ -89,12 +84,12 @@ public partial class mob : CharacterBody2D
 		}
 	}
 	// Character on left of danny
-	private void _on_attack_range_body_entered_left(Node2D body)
+	private void _enter_attack_state(Node2D body)
 	{
-		if(body.Name == "sworddanny") // Insures that other collisons don't count
+		if(body.Name == "TrashMan") // Insures that other collisons don't count
 		{
 			_animatedSprite.Play("fight");
-			attackState = "fightLeft";
+			attackState = "fight";
 		} 
 			
 	}
@@ -107,25 +102,4 @@ public partial class mob : CharacterBody2D
 		}
 		// Return to random state when user is outside zone	
 	}	
-	// Character on right of danny
-	private void _on_attack_range_body_entered_right(Node2D body)
-	{
-		if(body.Name == "TrashMan")
-		{
-			_animatedSprite.Play("fight");
-			attackState = "fightRight";
-		}
-			
-	}	
-	private void _on_stomp_area_body_entered(Node2D body)
-	{
-		// Character stomped on Danny
-		//GD.Print(body.Name); // Leave for debugging
-		if(body.Name == "TrashMan")
-		{
-			_animatedSprite.Play("fight");
-			QueueFree();
-		}
-			
-	}
 }

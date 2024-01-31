@@ -259,7 +259,7 @@ position = Vector2(2, 3)
 scale = Vector2(0.729167, 0.677083)
 sprite_frames = SubResource("SpriteFrames_jl3ac")
 animation = &"idledown"
-frame_progress = 0.984723
+frame_progress = 0.332527
 metadata/_aseprite_wizard_config_ = {
 "layer": "",
 "o_ex_p": "",
@@ -277,7 +277,7 @@ position = Vector2(2, 2)
 scale = Vector2(0.666667, 0.692708)
 sprite_frames = SubResource("SpriteFrames_ls1kq")
 animation = &"up"
-frame_progress = 0.971925
+frame_progress = 0.606663
 metadata/_aseprite_wizard_config_ = {
 "layer": "",
 "o_ex_p": "",
