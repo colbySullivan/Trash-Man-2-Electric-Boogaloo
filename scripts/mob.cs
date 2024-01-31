@@ -25,6 +25,7 @@ public partial class mob : CharacterBody2D
 	
 	public AnimatedSprite2D _animatedSprite;
 	public CharacterBody2D _trashman;
+	public Timer _timer;
 	//public AnimatedSprite2D _animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 	
 	Random r = new Random();
@@ -36,6 +37,7 @@ public partial class mob : CharacterBody2D
 	{
 		_animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		_trashman = GetParent().GetNode<CharacterBody2D>("TrashMan");
+		_timer = GetNode<Timer>("Timer");
 		_animatedSprite.Play("idle");
 	}
 	public override void _PhysicsProcess(double delta)
@@ -88,6 +90,7 @@ public partial class mob : CharacterBody2D
 	{
 		if(body.Name == "TrashMan") // Insures that other collisons don't count
 		{
+			_timer.Start(5);
 			_animatedSprite.Play("fight");
 			attackState = "fight";
 		} 
@@ -97,9 +100,13 @@ public partial class mob : CharacterBody2D
 	{
 		if(body.Name == "TrashMan")
 		{
-			_animatedSprite.Play("fight");
+			_animatedSprite.Play("wonder");
 			attackState = "wonder";
 		}
 		// Return to random state when user is outside zone	
 	}	
+	private void _on_timer_timeout()
+	{
+		attackState = "wonder";
+	}
 }
