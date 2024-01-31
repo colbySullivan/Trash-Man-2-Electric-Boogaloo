@@ -42,6 +42,7 @@ public partial class mob : CharacterBody2D
 	}
 	public override void _PhysicsProcess(double delta)
 	{
+		GD.Print(_timer.TimeLeft);
 		if (timer) {
 		  time += delta;
 		  // Change danny state every 2 seconds
@@ -54,6 +55,7 @@ public partial class mob : CharacterBody2D
 		// User outside of fight area
 		if(attackState == "wonder")
 		{
+			_timer.Stop();
 			if(state == 3){
 				velocity.X = SpeedLeft;
 			}
@@ -75,7 +77,8 @@ public partial class mob : CharacterBody2D
 		// User entered outer area
 		else if(attackState == "interested")
 		{
-			 Position += (_trashman.Position - Position)/80;
+			// Position -= (GlobalPosition - _trashman.GlobalPosition).Normalized();
+			Position += (_trashman.Position - Position)/80;
 		}
 			
 
@@ -117,7 +120,8 @@ public partial class mob : CharacterBody2D
 	{
 		if(body.Name == "TrashMan") // Insures that other collisons don't count
 		{
-			if(attackState != "fight")
+			_timer.Stop();
+			if(attackState != "fight") // Still want fast movement if player touched inside area
 			{
 				_animatedSprite.Play("fight");
 				attackState = "interested";

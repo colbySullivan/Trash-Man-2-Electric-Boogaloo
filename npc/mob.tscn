@@ -4,9 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://qcpgo54dl6p4" path="res://npc/trashybagattack.png" id="1_wpoi2"]
 [ext_resource type="Texture2D" uid="uid://co7xn2b4fdej2" path="res://npc/trashybag.png" id="2_yul28"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_8orxd"]
-radius = 174.046
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h7ovl"]
 size = Vector2(16, 16.5)
 
@@ -81,17 +78,14 @@ size = Vector2(19, 17)
 [sub_resource type="CircleShape2D" id="CircleShape2D_niq7e"]
 radius = 69.0072
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_8orxd"]
+radius = 174.046
+
 [node name="mob" type="CharacterBody2D"]
 position = Vector2(11, 20)
 collision_layer = 257
 collision_mask = 257
 script = ExtResource("1_c5et6")
-
-[node name="InterestRange" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InterestRange"]
-position = Vector2(-1, 4)
-shape = SubResource("CircleShape2D_8orxd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4.25)
@@ -128,14 +122,19 @@ shape = SubResource("RectangleShape2D_q4whe")
 position = Vector2(0, 5)
 shape = SubResource("CircleShape2D_niq7e")
 
+[node name="InterestRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InterestRange"]
+position = Vector2(-1, 4)
+shape = SubResource("CircleShape2D_8orxd")
+
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
-autostart = true
 
-[connection signal="body_entered" from="InterestRange" to="." method="_on_interest_range_body_entered"]
-[connection signal="body_exited" from="InterestRange" to="." method="_on_attack_range_body_exited"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_shape_entered" from="interactionArea" to="." method="_on_interaction_area_area_shape_entered"]
 [connection signal="body_entered" from="interactionArea" to="." method="_on_interaction_area_body_entered"]
 [connection signal="body_entered" from="AttackRange" to="." method="_enter_attack_state"]
+[connection signal="body_entered" from="InterestRange" to="." method="_on_interest_range_body_entered"]
+[connection signal="body_exited" from="InterestRange" to="." method="_on_attack_range_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
