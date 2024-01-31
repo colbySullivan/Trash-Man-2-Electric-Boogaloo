@@ -67,10 +67,15 @@ public partial class mob : CharacterBody2D
 			}
 			
 		}
-		// User entered left area
+		// User entered inner area
 		else if(attackState == "fight")
 		{
-			 Position += (_trashman.Position - Position)/50;
+			 Position += (_trashman.Position - Position)/40;
+		}
+		// User entered outer area
+		else if(attackState == "interested")
+		{
+			 Position += (_trashman.Position - Position)/80;
 		}
 			
 
@@ -90,23 +95,33 @@ public partial class mob : CharacterBody2D
 	{
 		if(body.Name == "TrashMan") // Insures that other collisons don't count
 		{
-			_timer.Start(5);
 			_animatedSprite.Play("fight");
 			attackState = "fight";
 		} 
 			
 	}
-	private void _on_interaction_area_body_exited(Node2D body)
+	private void _on_attack_range_body_exited(Node2D body)
 	{
 		if(body.Name == "TrashMan")
 		{
-			_animatedSprite.Play("wonder");
-			attackState = "wonder";
+			GD.Print("Losing intrest");
+			_timer.Start(5);
 		}
 		// Return to random state when user is outside zone	
 	}	
 	private void _on_timer_timeout()
 	{
 		attackState = "wonder";
+	}
+	private void _on_interest_range_body_entered(Node2D body)
+	{
+		if(body.Name == "TrashMan") // Insures that other collisons don't count
+		{
+			if(attackState != "fight")
+			{
+				_animatedSprite.Play("fight");
+				attackState = "interested";
+			}
+		} 
 	}
 }

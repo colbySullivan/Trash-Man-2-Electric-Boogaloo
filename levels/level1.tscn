@@ -81,4 +81,4 @@ position = Vector2(-1, -1)
 zoom = Vector2(5, 5)
 
 [node name="mob" parent="TileMap" instance=ExtResource("4_mpmji")]
-position = Vector2(-89, -62)
+position = Vector2(-86, -122)
