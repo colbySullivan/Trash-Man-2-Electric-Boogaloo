@@ -67,6 +67,8 @@ public partial class mob : CharacterBody2D
 				_animatedSprite.Play("idle");
 				velocity.X = 0;
 			}
+			Velocity = velocity;
+			MoveAndSlide();
 			
 		}
 		// User entered inner area
@@ -80,10 +82,6 @@ public partial class mob : CharacterBody2D
 			// Position -= (GlobalPosition - _trashman.GlobalPosition).Normalized();
 			Position += (_trashman.Position - Position)/80;
 		}
-			
-
-		Velocity = velocity;
-		MoveAndSlide();
 	}
 	private void _on_interaction_area_area_shape_entered(Rid area_rid, Area2D area, long area_shape_index, long local_shape_index)
 	{
