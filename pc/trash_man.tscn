@@ -193,7 +193,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 7.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -216,7 +216,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"down",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -239,7 +239,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"up",
-"speed": 5.0
+"speed": 12.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hw2rq"]
@@ -258,7 +258,8 @@ texture_filter = 1
 position = Vector2(2, 3)
 scale = Vector2(0.729167, 0.677083)
 sprite_frames = SubResource("SpriteFrames_jl3ac")
-animation = &"idleup"
+animation = &"idledown"
+frame_progress = 0.332527
 metadata/_aseprite_wizard_config_ = {
 "layer": "",
 "o_ex_p": "",
@@ -275,6 +276,8 @@ texture_filter = 1
 position = Vector2(2, 2)
 scale = Vector2(0.666667, 0.692708)
 sprite_frames = SubResource("SpriteFrames_ls1kq")
+animation = &"up"
+frame_progress = 0.606663
 metadata/_aseprite_wizard_config_ = {
 "layer": "",
 "o_ex_p": "",

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dy6lqqkww8rpb"]
+[gd_scene load_steps=7 format=3 uid="uid://dy6lqqkww8rpb"]
 
 [ext_resource type="PackedScene" uid="uid://cod82k8mo8rxq" path="res://pc/trash_man.tscn" id="1_diaur"]
 [ext_resource type="Script" path="res://scripts/TileMap.cs" id="2_j58k3"]
 [ext_resource type="Texture2D" uid="uid://j8b0apre2rvh" path="res://src/tiles2.png" id="4_4lh6l"]
+[ext_resource type="PackedScene" uid="uid://bym18rutiea3" path="res://npc/mob.tscn" id="4_mpmji"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bw0lc"]
 texture = ExtResource("4_4lh6l")
@@ -77,4 +78,7 @@ position = Vector2(-1, 0)
 
 [node name="Camera2D" type="Camera2D" parent="TileMap/TrashMan"]
 position = Vector2(-1, -1)
-zoom = Vector2(5, 5)
+zoom = Vector2(4, 4)
+
+[node name="mob" parent="TileMap" instance=ExtResource("4_mpmji")]
+position = Vector2(-131, -192)

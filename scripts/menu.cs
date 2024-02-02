@@ -7,7 +7,7 @@ public partial class menu : Control
 	public override void _Ready()
 	{
 		// Can select with ui arrows
-		GetNode<Button>("Start").GrabFocus();
+		GetNode<Button>("VBoxContainer/Start").GrabFocus();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
