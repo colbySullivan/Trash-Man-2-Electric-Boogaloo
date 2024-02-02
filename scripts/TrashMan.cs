@@ -11,6 +11,8 @@ public partial class TrashMan : CharacterBody2D
 
 	private AnimatedSprite2D _animatedSprite;
 	
+	private AnimatedSprite2D _animatedSwordSprite;
+	
 	private String _sceneName;
 	
 	public CollisionShape2D _sword;
@@ -21,8 +23,11 @@ public partial class TrashMan : CharacterBody2D
 		_animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		// Access to sword node globally
 		_sword = GetNode<CollisionShape2D>("SwordArea/CollisionShape2D");
+		// Access to sword animation globally
+		_animatedSwordSprite = GetNode<AnimatedSprite2D>("SwordAnimation");
 		_sceneName = GetTree().CurrentScene.Name;
 		_animatedSprite.Play("idle");
+		_animatedSwordSprite.Play("default");
 	}
 	public override void _PhysicsProcess(double delta)
 	{
@@ -45,23 +50,29 @@ public partial class TrashMan : CharacterBody2D
 		if(velocity.X < 0)
 		{
 			_animatedSprite.Play("idle");
+			_animatedSwordSprite.Play("default");
 			_animatedSprite.FlipH = true;
+			_animatedSwordSprite.FlipH = true;
 		}	
 		// User goes right
 		if(velocity.X > 0)
 		{
 			_animatedSprite.Play("idle");
+			_animatedSwordSprite.Play("default");
 			_animatedSprite.FlipH = false;
+			_animatedSwordSprite.FlipH = false;
 		}	
 		// User goes up
 		if(velocity.Y < 0)
 		{
+			_animatedSwordSprite.Play("up");
 			_animatedSprite.Play("idleup");
 			//_animatedSprite.FlipV = true;
 		}
 		// User goes down
 		if(velocity.Y > 0)
 		{
+			_animatedSwordSprite.Play("down");
 			_animatedSprite.Play("idledown");
 			//_animatedSprite.FlipV = false;
 		}	
@@ -74,16 +85,22 @@ public partial class TrashMan : CharacterBody2D
 		if (Input.IsActionJustPressed("fight"))
 		{
 			// Start fight animation
-			_animatedSprite.Play("fight");
+			//_animatedSprite.Play("fight");
 			// Renable sword area hitbox
+			_animatedSwordSprite.Stop();
+			_animatedSwordSprite.Play();
 			_sword.Disabled = false;
+			_animatedSprite.Visible = false;
+			_animatedSwordSprite.Visible = true;
 		}
 	}
-	private void _on_animated_sprite_2d_animation_finished()
+	public void _on_sword_animation_animation_finished()
 	{
 		// Return to idle position
-		_animatedSprite.Play("idle");
+		//_animatedSprite.Play("idle");
 		// Hide sword hitbox
 		_sword.Disabled = true;
+		_animatedSprite.Visible = true;
+		_animatedSwordSprite.Visible = false;
 	}
 }

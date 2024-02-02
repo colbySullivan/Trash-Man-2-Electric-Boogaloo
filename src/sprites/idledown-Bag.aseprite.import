@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://3yx0yoqd1nvy"
+path="res://.godot/imported/idledown-Bag.aseprite-3cc1702953f78930212ccbedcf7a8b51.res"
+
+[deps]
+
+source_file="res://src/sprites/idledown-Bag.aseprite"
+dest_files=["res://.godot/imported/idledown-Bag.aseprite-3cc1702953f78930212ccbedcf7a8b51.res"]
+
+[params]
+
