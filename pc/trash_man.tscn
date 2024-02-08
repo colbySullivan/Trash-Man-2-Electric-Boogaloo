@@ -242,8 +242,8 @@ animations = [{
 "speed": 12.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hw2rq"]
-size = Vector2(56, 55)
+[sub_resource type="CircleShape2D" id="CircleShape2D_trbas"]
+radius = 30.0167
 
 [node name="TrashMan" type="CharacterBody2D"]
 position = Vector2(-79, -45)
@@ -276,8 +276,8 @@ texture_filter = 1
 position = Vector2(2, 2)
 scale = Vector2(0.666667, 0.692708)
 sprite_frames = SubResource("SpriteFrames_ls1kq")
-animation = &"up"
-frame_progress = 0.606663
+animation = &"down"
+frame_progress = 0.0665135
 metadata/_aseprite_wizard_config_ = {
 "layer": "",
 "o_ex_p": "",
@@ -292,7 +292,7 @@ metadata/_aseprite_wizard_config_ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SwordArea"]
 position = Vector2(0, 4)
-shape = SubResource("RectangleShape2D_hw2rq")
+shape = SubResource("CircleShape2D_trbas")
 script = ExtResource("6_ixx80")
 
 [connection signal="animation_looped" from="SwordAnimation" to="." method="_on_sword_animation_animation_finished"]
