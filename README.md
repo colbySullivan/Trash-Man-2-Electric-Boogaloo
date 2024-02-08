@@ -27,8 +27,9 @@ This is a spinoff from my first "game" but this one has some actually gameplay.
   <br>
   
 ## Demo
+![Screen Recording 2024-02-08 at 5 09 01 PM(1)](https://github.com/colbySullivan/Trash-Man-2-Electric-Boogaloo/assets/88957296/c3499f60-9b13-4464-9e25-c1101ca565f5)
 
-Plans for a demo are to be completed when combat system is finished
+Plans for a better demo are to be completed when combat system is finished
 <br>
 
 ## Prerequisites
