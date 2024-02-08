@@ -3,20 +3,24 @@ using System;
 
 public partial class TrashMan : CharacterBody2D
 {
+	// Constants for movement and jumping
 	public const float Speed = 300.0f;
 	public const float JumpVelocity = -400.0f;
 
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
 	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 
+	// References to AnimatedSprite2D nodes
 	private AnimatedSprite2D _animatedSprite;
-	
 	private AnimatedSprite2D _animatedSwordSprite;
-	
+
+	// Reference to the current scene name
 	private String _sceneName;
-	
+
+	// Reference to the sword hitbox
 	public CollisionShape2D _sword;
-	
+
+	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		// Access to animation globally
@@ -29,6 +33,8 @@ public partial class TrashMan : CharacterBody2D
 		_animatedSprite.Play("idle");
 		_animatedSwordSprite.Play("default");
 	}
+
+	// Called every physics frame. 'delta' is the elapsed time since the previous frame.
 	public override void _PhysicsProcess(double delta)
 	{
 		Vector2 velocity = Velocity;
@@ -46,47 +52,54 @@ public partial class TrashMan : CharacterBody2D
 			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
 			velocity.Y = Mathf.MoveToward(Velocity.Y, 0, Speed);
 		}
+
+		// Handle animations based on player's movement direction
+		HandleAnimations(velocity);
+
+		Velocity = velocity;
+		MoveAndSlide();
+		SwingSword();
+	}
+
+	// Method to handle player animations based on movement direction
+	private void HandleAnimations(Vector2 velocity)
+	{
 		// User goes left
-		if(velocity.X < 0)
+		if (velocity.X < 0)
 		{
 			_animatedSprite.Play("idle");
 			_animatedSwordSprite.Play("default");
 			_animatedSprite.FlipH = true;
 			_animatedSwordSprite.FlipH = true;
-		}	
+		}
 		// User goes right
-		if(velocity.X > 0)
+		if (velocity.X > 0)
 		{
 			_animatedSprite.Play("idle");
 			_animatedSwordSprite.Play("default");
 			_animatedSprite.FlipH = false;
 			_animatedSwordSprite.FlipH = false;
-		}	
+		}
 		// User goes up
-		if(velocity.Y < 0)
+		if (velocity.Y < 0)
 		{
 			_animatedSwordSprite.Play("up");
 			_animatedSprite.Play("idleup");
-			//_animatedSprite.FlipV = true;
 		}
 		// User goes down
-		if(velocity.Y > 0)
+		if (velocity.Y > 0)
 		{
 			_animatedSwordSprite.Play("down");
 			_animatedSprite.Play("idledown");
-			//_animatedSprite.FlipV = false;
-		}	
-		Velocity = velocity;
-		MoveAndSlide();
-		swing_sword();
+		}
 	}
-	public void swing_sword()
+
+	// Method to handle swinging the sword
+	private void SwingSword()
 	{
 		if (Input.IsActionJustPressed("fight"))
 		{
 			// Start fight animation
-			//_animatedSprite.Play("fight");
-			// Renable sword area hitbox
 			_animatedSwordSprite.Stop();
 			_animatedSwordSprite.Play();
 			_sword.Disabled = false;
@@ -94,11 +107,11 @@ public partial class TrashMan : CharacterBody2D
 			_animatedSwordSprite.Visible = true;
 		}
 	}
+
+	// Called when the sword animation finishes
 	public void _on_sword_animation_animation_finished()
 	{
 		// Return to idle position
-		//_animatedSprite.Play("idle");
-		// Hide sword hitbox
 		_sword.Disabled = true;
 		_animatedSprite.Visible = true;
 		_animatedSwordSprite.Visible = false;
