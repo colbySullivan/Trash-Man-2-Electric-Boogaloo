@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://cod82k8mo8rxq"]
+[gd_scene load_steps=42 format=3 uid="uid://cod82k8mo8rxq"]
 
 [ext_resource type="Script" path="res://scripts/TrashMan.cs" id="1_r3d1f"]
 [ext_resource type="Texture2D" uid="uid://duqcpw2wyta5c" path="res://pc/trashFight.png" id="2_dfi58"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://we7capjsf0tf" path="res://pc/idledown-Bag.png" id="4_6tjci"]
 [ext_resource type="Texture2D" uid="uid://bdhhmksnxkoni" path="res://pc/idleup-Bag.png" id="5_ustq1"]
 [ext_resource type="Texture2D" uid="uid://ctu1yfll5uar5" path="res://src/sprites/temp attack/trashFight - New1.png" id="6_ifqpm"]
-[ext_resource type="Script" path="res://pc/CollisionShape2D.cs" id="6_ixx80"]
 [ext_resource type="Texture2D" uid="uid://cuo5qvb2nycb7" path="res://pc/idledown-BagAttack.png" id="6_qe4p6"]
 [ext_resource type="Texture2D" uid="uid://c8d7whrylwpp0" path="res://src/sprites/temp attack/trashFight - New2.png" id="7_ip88r"]
 [ext_resource type="Texture2D" uid="uid://dab6y3eyhlut5" path="res://src/sprites/temp attack/trashFight - New3.png" id="8_0q4ir"]
@@ -293,6 +292,5 @@ metadata/_aseprite_wizard_config_ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SwordArea"]
 position = Vector2(0, 4)
 shape = SubResource("CircleShape2D_trbas")
-script = ExtResource("6_ixx80")
 
 [connection signal="animation_looped" from="SwordAnimation" to="." method="_on_sword_animation_animation_finished"]
