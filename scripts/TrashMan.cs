@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using DialogueManagerRuntime;
 
 public partial class TrashMan : CharacterBody2D
 {
@@ -38,7 +39,11 @@ public partial class TrashMan : CharacterBody2D
 	public override void _PhysicsProcess(double delta)
 	{
 		Vector2 velocity = Velocity;
-
+		// Load dialogue file
+		var dialogue = GD.Load<Resource>("res://dialogue/main.dialogue");
+		// Start dialogue tree
+		if (Input.IsActionJustPressed("Yap"))
+			DialogueManager.ShowExampleDialogueBalloon(dialogue, "start");
 		// Get the input direction and handle the movement/deceleration.
 		// As good practice, you should replace UI actions with custom gameplay actions.
 		Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
