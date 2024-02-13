@@ -1,5 +1,6 @@
 using Godot;
 using System;
+// https://github.com/nathanhoad/godot_dialogue_manager?tab=readme-ov-file
 using DialogueManagerRuntime;
 
 public partial class TrashMan : CharacterBody2D
